@@ -21,7 +21,7 @@ func {{.HandlerName}}(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		if err != nil {
 			xhttp.JsonBaseResponseCtx(r.Context(), w, err)
 		} else {
-			xhttp.JsonBaseResponseCtx(r.Context(), w, resp)
+			{{if .HasResp}}xhttp.JsonBaseResponseCtx(r.Context(), w, resp){{else}}xhttp.JsonBaseResponseCtx(r.Context(), w, nil){{end}}
 		}
 	}
 }
